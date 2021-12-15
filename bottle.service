@@ -1,0 +1,11 @@
+[Unit]
+Description=Roof Controller web
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/code/aldiroof-ext
+ExecStart=/home/pi/code/aldiroof-ext/venv/bin/python3 /home/pi/code/aldiroof-ext/runserver.py
+
+[Install]
+WantedBy=multi-user.target
