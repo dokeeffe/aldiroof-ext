@@ -13,15 +13,26 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-4">
-                <button type="button" id="openroof" data-loading-text="Opening..." class="btn btn-primary" autocomplete="off">Open</button>
+                <button type="button" id="openroof" data-loading-text="Opening..." class="btn btn-primary" autocomplete="off">Open Roof</button>
             </div>
             <div class="col-4">
-                <button type="button" id="abort" data-loading-text="Opening..." class="btn btn-warning" autocomplete="off">Abort</button>
+                <button type="button" id="abort" data-loading-text="Opening..." class="btn btn-danger" autocomplete="off">STOP</button>
             </div>
             <div class="col-4">
-                <button type="button" id="closeroof" data-loading-text="Closing..." class="btn btn-primary" autocomplete="off">Close</button>
+                <button type="button" id="closeroof" data-loading-text="Closing..." class="btn btn-primary" autocomplete="off">Close Roof</button>
             </div>
         </div>
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <button type="button" id="openshutter" data-loading-text="Opeining..." class="btn btn-primary" autocomplete="off">Open Shutter</button>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <button type="button" id="closeshutter" data-loading-text="Closing..." class="btn btn-primary" autocomplete="off">Close Shutter</button>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -34,6 +45,18 @@
           $('#state').text('Opening')
           $.post( 'open', function( openresp ) {
             set_roof_state(openresp);
+          });
+        });
+        $('#openshutter').on('click', function () {
+          $('#state').text('Opening shutter')
+          $.post( 'shutteropen', function( resp ) {
+            set_roof_state(resp);
+          });
+        });
+       $('#closeshutter').on('click', function () {
+          $('#state').text('Closing shutter')
+          $.post( 'shutterclose', function( resp ) {
+            set_roof_state(resp);
           });
         });
       $('#abort').on('click', function () {
@@ -73,3 +96,4 @@
 </script>
 </body>
 </html>
+
